@@ -4,7 +4,7 @@ require_relative('../customer.rb')
 require_relative('../item.rb')
 
 
-class Tilltest < MiniTest::Test
+class CustomerTest < MiniTest::Test
 
   def setup()
     @item = Item.new(10)

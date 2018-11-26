@@ -2,15 +2,13 @@ require('minitest/autorun')
 require('minitest/rg')
 require_relative('../till.rb')
 require_relative('../item.rb')
-require_relative('../customer.rb')
 
 
-class Tilltest < MiniTest::Test
+
+class TillTest < MiniTest::Test
 
   def setup()
     @item = Item.new(15)
-
-    @customer = Customer.new("Sarah", 50)
 
     @till = Till.new(100)
   end
@@ -64,5 +62,13 @@ class Tilltest < MiniTest::Test
     @till.till_sell_item(@item)
     assert_equal(115, @till.balance)
     assert_equal(15, @till.sales)
+    assert_equal(15, @till.income)
+  end
+
+  def test_till_refund_item()
+    @till.till_refund_item(@item)
+    assert_equal(85, @till.balance)
+    assert_equal(15, @till.refunds)
+    assert_equal(-15, @till.income)
   end
 end

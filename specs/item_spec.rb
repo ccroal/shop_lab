@@ -3,7 +3,7 @@ require('minitest/rg')
 require_relative('../item.rb')
 
 
-class Tilltest < MiniTest::Test
+class ItemTest < MiniTest::Test
 
   def setup()
     @item = Item.new(10)

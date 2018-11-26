@@ -32,5 +32,12 @@ class Till
   def till_sell_item(item)
     till_change_balance_sale(item)
     increase_sales(item)
+    calculate_income()
+  end
+
+  def till_refund_item(item)
+    till_change_balance_refund(item)
+    increase_refunds(item)
+    calculate_income()
   end
 end
