@@ -20,11 +20,19 @@ class ShopTest < MiniTest::Test
     assert_equal("Local Shop", @shop.name)
   end
 
-  def test_till_sell_item()
+  def test_sell_item()
     @shop.sell_item(@customer, @item)
     assert_equal(55, @customer.wallet)
     assert_equal(120, @shop.till.balance)
     assert_equal(20, @shop.till.sales)
     assert_equal(20, @shop.till.income)
+  end
+
+  def test_refund_item()
+    @shop.refund_item(@customer, @item)
+    assert_equal(95, @customer.wallet)
+    assert_equal(80, @shop.till.balance)
+    assert_equal(20, @shop.till.refunds)
+    assert_equal(-20, @shop.till.income)
   end
 end
