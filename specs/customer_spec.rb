@@ -28,4 +28,15 @@ class CustomerTest < MiniTest::Test
     @customer.refund_item(@item)
     assert_equal(110, @customer.wallet)
   end
+
+  def test_customer_can_afford_item()
+    result = @customer.can_afford?(@item)
+    assert_equal(true, result)
+  end
+
+  def test_customer_cannot_afford()
+    customer2 = Customer.new("David", 5)
+    result = customer2.can_afford?(@item)
+    assert_equal(false, result)
+  end
 end

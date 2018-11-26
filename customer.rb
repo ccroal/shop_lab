@@ -8,10 +8,21 @@ class Customer
   end
 
   def buy_item(item)
+    if can_afford?(item) == true
     @wallet -= item.price
+    end
   end
 
   def refund_item(item)
     @wallet += item.price
   end
+
+  def can_afford?(item)
+    if @wallet >= item.price
+      return true
+    else
+      return false
+    end
+  end
+
 end
